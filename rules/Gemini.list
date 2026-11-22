@@ -1,0 +1,9 @@
+# Gemini
+DOMAIN,ai.google.dev
+DOMAIN,deepmind.google
+DOMAIN,gemini.google.com
+DOMAIN,aistudio.google.com
+DOMAIN,notebooklm.google.com
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
+DOMAIN-SUFFIX,aiplatform.googleapis.com

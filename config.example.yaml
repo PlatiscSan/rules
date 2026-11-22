@@ -87,6 +87,171 @@ rule-providers:
     behavior: classical
     format: text
     path: ./rules/Streaming.list
+  OpenAI:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/OpenAI.list
+  Claude:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Claude.list
+  Kimi:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Kimi.list
+  Gemini:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Gemini.list
+  DeepSeek:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/DeepSeek.list
+  Grok:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Grok.list
+  Perplexity:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Perplexity.list
+  Copilot:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Copilot.list
+  Qwen:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Qwen.list
+  Netflix:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Netflix.list
+  DisneyPlus:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/DisneyPlus.list
+  Spotify:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Spotify.list
+  Twitch:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Twitch.list
+  Vimeo:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Vimeo.list
+  Steam:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Steam.list
+  EpicGames:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/EpicGames.list
+  EA:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/EA.list
+  Ubisoft:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Ubisoft.list
+  Blizzard:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Blizzard.list
+  RiotGames:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/RiotGames.list
+  Twitter:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Twitter.list
+  Facebook:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Facebook.list
+  Instagram:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Instagram.list
+  Threads:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Threads.list
+  Reddit:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Reddit.list
+  WhatsApp:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/WhatsApp.list
+  LinkedIn:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/LinkedIn.list
+  Docker:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Docker.list
+  Npm:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Npm.list
+  PyPI:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/PyPI.list
+  Go:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Go.list
+  Rust:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Rust.list
+  StackOverflow:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/StackOverflow.list
 
 proxy-groups:
   - name: Proxy
@@ -96,7 +261,7 @@ proxy-groups:
     type: select
     proxies: [Proxy, DIRECT]
     use: [Subscription]
-  - name: Taiwan
+  - name: Bahamut
     type: select
     use: [Subscription]
     empty-fallback: REJECT
@@ -137,6 +302,138 @@ proxy-groups:
     type: select
     proxies: [Proxy]
     use: [Subscription]
+  - name: OpenAI
+    type: select
+    proxies: [AI]
+    use: [Subscription]
+  - name: Claude
+    type: select
+    proxies: [AI]
+    use: [Subscription]
+  - name: Kimi
+    type: select
+    proxies: [AI]
+    use: [Subscription]
+  - name: Gemini
+    type: select
+    proxies: [AI]
+    use: [Subscription]
+  - name: DeepSeek
+    type: select
+    proxies: [AI]
+    use: [Subscription]
+  - name: Grok
+    type: select
+    proxies: [AI]
+    use: [Subscription]
+  - name: Perplexity
+    type: select
+    proxies: [AI]
+    use: [Subscription]
+  - name: Copilot
+    type: select
+    proxies: [AI]
+    use: [Subscription]
+  - name: Qwen
+    type: select
+    proxies: [AI]
+    use: [Subscription]
+  - name: Netflix
+    type: select
+    proxies: [Streaming]
+    use: [Subscription]
+  - name: DisneyPlus
+    type: select
+    proxies: [Streaming]
+    use: [Subscription]
+  - name: Spotify
+    type: select
+    proxies: [Streaming]
+    use: [Subscription]
+  - name: Twitch
+    type: select
+    proxies: [Streaming]
+    use: [Subscription]
+  - name: Vimeo
+    type: select
+    proxies: [Streaming]
+    use: [Subscription]
+  - name: Steam
+    type: select
+    proxies: [GameAPI]
+    use: [Subscription]
+  - name: EpicGames
+    type: select
+    proxies: [GameAPI]
+    use: [Subscription]
+  - name: EA
+    type: select
+    proxies: [GameAPI]
+    use: [Subscription]
+  - name: Ubisoft
+    type: select
+    proxies: [GameAPI]
+    use: [Subscription]
+  - name: Blizzard
+    type: select
+    proxies: [GameAPI]
+    use: [Subscription]
+  - name: RiotGames
+    type: select
+    proxies: [GameAPI]
+    use: [Subscription]
+  - name: Twitter
+    type: select
+    proxies: [SocialMedia]
+    use: [Subscription]
+  - name: Facebook
+    type: select
+    proxies: [SocialMedia]
+    use: [Subscription]
+  - name: Instagram
+    type: select
+    proxies: [SocialMedia]
+    use: [Subscription]
+  - name: Threads
+    type: select
+    proxies: [SocialMedia]
+    use: [Subscription]
+  - name: Reddit
+    type: select
+    proxies: [SocialMedia]
+    use: [Subscription]
+  - name: WhatsApp
+    type: select
+    proxies: [SocialMedia]
+    use: [Subscription]
+  - name: LinkedIn
+    type: select
+    proxies: [SocialMedia]
+    use: [Subscription]
+  - name: Docker
+    type: select
+    proxies: [Developer]
+    use: [Subscription]
+  - name: Npm
+    type: select
+    proxies: [Developer]
+    use: [Subscription]
+  - name: PyPI
+    type: select
+    proxies: [Developer]
+    use: [Subscription]
+  - name: Go
+    type: select
+    proxies: [Developer]
+    use: [Subscription]
+  - name: Rust
+    type: select
+    proxies: [Developer]
+    use: [Subscription]
+  - name: StackOverflow
+    type: select
+    proxies: [Developer]
+    use: [Subscription]
 
 rules:
   - RULE-SET,LocalNetwork,DIRECT
@@ -146,16 +443,49 @@ rules:
   - RULE-SET,GameCDN,DIRECT
   - RULE-SET,MicrosoftCDN,DIRECT
   # Keep AI ahead of Google so Gemini and Vertex AI use the AI group.
+  - RULE-SET,OpenAI,OpenAI
+  - RULE-SET,Claude,Claude
+  - RULE-SET,Kimi,Kimi
+  - RULE-SET,Gemini,Gemini
+  - RULE-SET,DeepSeek,DeepSeek
+  - RULE-SET,Grok,Grok
+  - RULE-SET,Perplexity,Perplexity
+  - RULE-SET,Copilot,Copilot
+  - RULE-SET,Qwen,Qwen
   - RULE-SET,AI,AI
-  - RULE-SET,Bahamut,Taiwan
+  - RULE-SET,Bahamut,Bahamut
   - RULE-SET,Google,Google
   - RULE-SET,GitHub,GitHub
+  - RULE-SET,Steam,Steam
+  - RULE-SET,EpicGames,EpicGames
+  - RULE-SET,EA,EA
+  - RULE-SET,Ubisoft,Ubisoft
+  - RULE-SET,Blizzard,Blizzard
+  - RULE-SET,RiotGames,RiotGames
   - RULE-SET,GameAPI,GameAPI
   - RULE-SET,MicrosoftAPI,MicrosoftAPI
+  - RULE-SET,Docker,Docker
+  - RULE-SET,Npm,Npm
+  - RULE-SET,PyPI,PyPI
+  - RULE-SET,Go,Go
+  - RULE-SET,Rust,Rust
+  - RULE-SET,StackOverflow,StackOverflow
   - RULE-SET,Developer,Developer
   - RULE-SET,Telegram,Telegram
   - RULE-SET,Discord,Discord
+  - RULE-SET,Twitter,Twitter
+  - RULE-SET,Facebook,Facebook
+  - RULE-SET,Instagram,Instagram
+  - RULE-SET,Threads,Threads
+  - RULE-SET,Reddit,Reddit
+  - RULE-SET,WhatsApp,WhatsApp
+  - RULE-SET,LinkedIn,LinkedIn
   - RULE-SET,SocialMedia,SocialMedia
+  - RULE-SET,Netflix,Netflix
+  - RULE-SET,DisneyPlus,DisneyPlus
+  - RULE-SET,Spotify,Spotify
+  - RULE-SET,Twitch,Twitch
+  - RULE-SET,Vimeo,Vimeo
   - RULE-SET,Streaming,Streaming
   # Custom routing above takes precedence over mainland China direct rules.
   - GEOSITE,cn,DIRECT
