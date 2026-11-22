@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository contains Mihomo/Clash rule providers and proxy-provider templates. `rules/*.list` holds domain and IP rules grouped by service. `proxy-providers/` holds remote subscription provider templates; `proxies/` holds local node templates. `config.example.yaml` defines local providers, proxy groups, proxy-provider references, and rule precedence for merging into an existing Mihomo configuration. `README.md` documents routing policies and setup. Keep provider filenames and keys aligned, such as `rules/GameCDN.list` and `GameCDN`. Do not add generated Clash state, proxy credentials, or subscription URLs.
+This repository contains Mihomo/Clash rule providers and proxy-provider templates. `rules/*.list` holds domain and IP rules grouped by service. `proxy-providers/` holds remote subscription and airport subscription provider templates; `proxies/` holds local node templates. `config.example.yaml` defines local providers, proxy groups, proxy-provider references, and rule precedence for merging into an existing Mihomo configuration. `README.md` documents routing policies and setup. Keep provider filenames and keys aligned, such as `rules/GameCDN.list` and `GameCDN`. Do not add generated Clash state, proxy credentials, or subscription URLs.
 
 ## Development Commands
 

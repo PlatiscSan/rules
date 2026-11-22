@@ -27,6 +27,11 @@ These rules target Mihomo and Clash variants that support `rule-providers`. "A�
 
 `config.example.yaml` 中的 `Proxy` 分组已通过 `use: [Subscription]` 引用远程提供者，并保留 `include-all: true` 以兼容现有节点。代理节点由 `proxy-providers` 提供，`rule-providers` 只负责流量分流规则，两者互不替代。
 
+`proxy-providers/subscription.example.yaml` 是通用远程订阅提供者模板；
+`proxy-providers/airport.example.yaml` 是机场订阅提供者模板，适用于返回 Clash/Mihomo 格式 YAML 的机场订阅。
+
+`config.example.yaml` 中的 `Proxy` 分组使用 `include-all: true`，会自动聚合你合并进完整配置的所有 `proxy-providers` 节点。代理节点由 `proxy-providers` 提供，`rule-providers` 只负责流量分流规则，两者互不替代。
+
 The configuration also rejects domains in `GEOSITE,category-ads-all`, then routes remaining mainland China domains and IPs directly with `GEOSITE,cn` and `GEOIP,CN`. Custom rules take precedence, so Moonshot still uses `AI`, Bahamut still uses `Taiwan`, and Google remains fully proxied. These built-in rules require Mihomo's standard GeoSite and GeoIP data files.
 
 ## Usage
