@@ -1,0 +1,19 @@
+# The keyword covers Google's country-specific domains.
+DOMAIN-KEYWORD,google
+DOMAIN-SUFFIX,gmail.com
+DOMAIN-SUFFIX,gstatic.com
+DOMAIN-SUFFIX,ggpht.com
+DOMAIN-SUFFIX,gvt1.com
+DOMAIN-SUFFIX,gvt2.com
+DOMAIN-SUFFIX,gvt3.com
+DOMAIN-SUFFIX,android.com
+DOMAIN-SUFFIX,recaptcha.net
+DOMAIN-SUFFIX,goo.gl
+DOMAIN-SUFFIX,g.co
+DOMAIN-SUFFIX,g.page
+
+# YouTube is included in "all Google services".
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,ytimg.com
+DOMAIN-SUFFIX,youtube-nocookie.com

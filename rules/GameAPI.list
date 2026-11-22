@@ -1,0 +1,29 @@
+# Steam store, account, community, chat, and Web API
+DOMAIN-SUFFIX,steampowered.com
+DOMAIN-SUFFIX,steamcommunity.com
+DOMAIN-SUFFIX,steam-chat.com
+DOMAIN-SUFFIX,steam-api.com
+
+# Epic Games / Unreal Engine services
+DOMAIN-SUFFIX,epicgames.com
+DOMAIN-SUFFIX,epicgames.dev
+DOMAIN-SUFFIX,unrealengine.com
+DOMAIN-SUFFIX,fortnite.com
+DOMAIN-SUFFIX,easy.ac
+
+# EA / Origin services
+DOMAIN-SUFFIX,ea.com
+DOMAIN-SUFFIX,origin.com
+DOMAIN-SUFFIX,easports.com
+
+# Ubisoft services
+DOMAIN-SUFFIX,ubisoft.com
+DOMAIN-SUFFIX,ubisoftconnect.com
+DOMAIN-SUFFIX,ubi.com
+
+# Blizzard and Riot services
+DOMAIN-SUFFIX,battle.net
+DOMAIN-SUFFIX,blizzard.com
+DOMAIN-SUFFIX,riotgames.com
+DOMAIN-SUFFIX,leagueoflegends.com
+DOMAIN-SUFFIX,playvalorant.com

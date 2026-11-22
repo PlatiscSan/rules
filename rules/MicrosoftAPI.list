@@ -1,0 +1,30 @@
+# Microsoft identity and account APIs
+DOMAIN,login.microsoft.com
+DOMAIN-SUFFIX,microsoftonline.com
+DOMAIN,login.windows.net
+DOMAIN,login.live.com
+DOMAIN,account.live.com
+DOMAIN,api.live.com
+DOMAIN-SUFFIX,msftidentity.com
+DOMAIN-SUFFIX,msidentity.com
+
+# Microsoft Graph and OneDrive APIs
+DOMAIN-SUFFIX,graph.microsoft.com
+DOMAIN,graph.microsoft.us
+DOMAIN,graph.windows.net
+DOMAIN,api.onedrive.com
+DOMAIN,api.microsoft.com
+
+# Azure management APIs
+DOMAIN,portal.azure.com
+DOMAIN,account.azure.com
+DOMAIN,management.azure.com
+DOMAIN-SUFFIX,management.core.windows.net
+DOMAIN-SUFFIX,azure-api.net
+
+# Microsoft 365 APIs; file-serving CDNs stay direct.
+DOMAIN,api.office.net
+DOMAIN,outlook.office.com
+DOMAIN,outlook.office365.com
+DOMAIN,substrate.office.com
+DOMAIN,autodiscover.outlook.com

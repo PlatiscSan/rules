@@ -1,0 +1,41 @@
+# Keep this ruleset ahead of GameAPI.list.
+
+# Steam content and static assets
+DOMAIN-SUFFIX,steamstatic.com
+DOMAIN-SUFFIX,steamcontent.com
+DOMAIN-SUFFIX,steamusercontent.com
+DOMAIN-SUFFIX,steambroadcast.com
+DOMAIN-SUFFIX,steamserver.net
+DOMAIN,steamuserimages-a.akamaihd.net
+DOMAIN,steamcontent-a.akamaihd.net
+DOMAIN,steamstatic-a.akamaihd.net
+
+# Epic Games / Unreal Engine downloads
+DOMAIN,cdn1.epicgames.com
+DOMAIN,cdn2.epicgames.com
+DOMAIN,cdn3.epicgames.com
+DOMAIN,download.epicgames.com
+DOMAIN,cdn1.unrealengine.com
+DOMAIN,cdn2.unrealengine.com
+DOMAIN,cdn3.unrealengine.com
+DOMAIN,epicgames-download1.akamaized.net
+
+# EA / Origin assets
+DOMAIN-SUFFIX,eaassets.com
+DOMAIN,cdn.ea.com
+DOMAIN,cdn.origin.com
+DOMAIN,origin-a.akamaihd.net
+
+# Ubisoft assets
+DOMAIN,cdn.ubi.com
+DOMAIN,cdn.ubisoft.com
+DOMAIN,ubistatic-a.akamaihd.net
+DOMAIN,ubistatic2-a.akamaihd.net
+DOMAIN,ubistatic3-a.akamaihd.net
+
+# Blizzard and Riot content
+DOMAIN-SUFFIX,blizzardcdn.net
+DOMAIN,blzddist1-a.akamaihd.net
+DOMAIN,blzddist2-a.akamaihd.net
+DOMAIN,blzddist3-a.akamaihd.net
+DOMAIN-SUFFIX,riotcdn.net

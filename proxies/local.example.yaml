@@ -1,0 +1,17 @@
+# 本地代理节点示例模板。将示例节点替换为你自己的节点，不要提交私有订阅或凭据。
+#
+# proxies:
+#   - name: "Example-Node"
+#     type: vmess
+#     server: example.com
+#     port: 443
+#     uuid: "00000000-0000-0000-0000-000000000000"
+#     alterId: 0
+#     cipher: auto
+#     tls: true
+#     network: ws
+#     ws-opts:
+#       path: "/"
+#       headers:
+#         Host: example.com
+#     udp: true

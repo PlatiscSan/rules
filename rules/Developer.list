@@ -1,0 +1,37 @@
+# Docker registries, authentication, and content
+DOMAIN-SUFFIX,docker.com
+DOMAIN-SUFFIX,docker.io
+DOMAIN-SUFFIX,docker.dev
+DOMAIN-SUFFIX,dockerusercontent.com
+
+# JavaScript and Python packages
+DOMAIN-SUFFIX,npmjs.com
+DOMAIN-SUFFIX,npmjs.org
+DOMAIN-SUFFIX,npm.im
+DOMAIN-SUFFIX,pypi.org
+DOMAIN-SUFFIX,pythonhosted.org
+DOMAIN-SUFFIX,python.org
+
+# Go and Rust toolchains
+DOMAIN-SUFFIX,golang.org
+DOMAIN-SUFFIX,go.dev
+DOMAIN-SUFFIX,rust-lang.org
+DOMAIN-SUFFIX,crates.io
+DOMAIN-SUFFIX,rustup.rs
+
+# Other common package ecosystems
+DOMAIN-SUFFIX,maven.org
+DOMAIN-SUFFIX,gradle.org
+DOMAIN-SUFFIX,nuget.org
+DOMAIN-SUFFIX,rubygems.org
+DOMAIN-SUFFIX,brew.sh
+
+# Developer communities and static assets
+DOMAIN-SUFFIX,stackoverflow.com
+DOMAIN-SUFFIX,stackexchange.com
+DOMAIN-SUFFIX,sstatic.net
+DOMAIN-SUFFIX,askubuntu.com
+DOMAIN-SUFFIX,superuser.com
+DOMAIN-SUFFIX,serverfault.com
+DOMAIN-SUFFIX,jsdelivr.net
+DOMAIN-SUFFIX,unpkg.com

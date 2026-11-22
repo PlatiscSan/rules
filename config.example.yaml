@@ -1,0 +1,120 @@
+# Merge these sections into an existing Mihomo configuration.
+# Rule-provider paths are relative to the merged configuration file.
+
+# 合并你自己的 proxy-providers 到此处，例如：
+# proxy-providers:
+#   Subscription:
+#     type: http
+#     url: "https://your-subscription.example.com"
+#     interval: 86400
+
+rule-providers:
+  LocalNetwork:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/LocalNetwork.list
+  AI:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/AI.list
+  Google:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Google.list
+  GitHub:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/GitHub.list
+  GameAPI:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/GameAPI.list
+  GameCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/GameCDN.list
+  MicrosoftAPI:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/MicrosoftAPI.list
+  MicrosoftCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/MicrosoftCDN.list
+  Bahamut:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Bahamut.list
+  Developer:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Developer.list
+  Telegram:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Telegram.list
+  Discord:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Discord.list
+  SocialMedia:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/SocialMedia.list
+  Streaming:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Streaming.list
+
+proxy-groups:
+  # include-all imports nodes from existing proxies and proxy-providers.
+  - name: Proxy
+    type: select
+    use:
+      - Subscription
+    include-all: true
+  - name: AI
+    type: select
+    proxies: [Proxy, DIRECT]
+  - name: Taiwan
+    type: select
+    include-all: true
+    filter: '(?i)台湾|台灣|台北|臺北|taiwan|taipei|\btw\b'
+
+rules:
+  - RULE-SET,LocalNetwork,DIRECT
+  # Requires Mihomo's standard geosite data; block ads before Google rules.
+  - GEOSITE,category-ads-all,REJECT
+  # Direct CDN rules must precede their broader API rules.
+  - RULE-SET,GameCDN,DIRECT
+  - RULE-SET,MicrosoftCDN,DIRECT
+  # Keep AI ahead of Google so Gemini and Vertex AI use the AI group.
+  - RULE-SET,AI,AI
+  - RULE-SET,Bahamut,Taiwan
+  - RULE-SET,Google,Proxy
+  - RULE-SET,GitHub,Proxy
+  - RULE-SET,GameAPI,Proxy
+  - RULE-SET,MicrosoftAPI,Proxy
+  - RULE-SET,Developer,Proxy
+  - RULE-SET,Telegram,Proxy
+  - RULE-SET,Discord,Proxy
+  - RULE-SET,SocialMedia,Proxy
+  - RULE-SET,Streaming,Proxy
+  # Custom routing above takes precedence over mainland China direct rules.
+  - GEOSITE,cn,DIRECT
+  - GEOIP,CN,DIRECT
+  # Place these entries before the existing final MATCH rule.
