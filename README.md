@@ -1,46 +1,41 @@
 # Custom Clash Rules
 
-These rules target Mihomo and Clash variants that support `rule-providers`. "A社" is interpreted as Anthropic.
+## OpenClash
+
+1. 在本地完整配置 `custom.yaml` 中填写或确认 `proxy-providers.Subscription.url`。使用订阅服务提供的 Clash/Mihomo YAML 地址，响应应包含顶层 `proxies` 节点列表。
+2. 打开 **服务 → OpenClash → 配置管理**，选择 **规则集文件** 上传 `rules/` 下的全部 14 个 `.list` 文件。OpenClash 将它们放在 `/etc/openclash/rule_provider/`，对应 `custom.yaml` 中的 `./rule_provider/`。
+3. 在同页选择 **配置文件** 上传 `custom.yaml` 并应用，确保 Mihomo 核心已安装。规则使用 GeoSite 的 `category-ads-all`、`cn` 和 GeoIP 的 `CN`，需要核心可加载对应的 GEO 数据。
+4. 打开仪表盘，在 `Proxy` 组选默认节点。各服务组默认跟随 `Proxy`，也可以独立选择订阅节点。巴哈姆特走 `Taiwan`，该组按节点名筛选台湾节点，组为空时回退到 `REJECT`。使用支持 `empty-fallback` 的 Mihomo 核心。
+
+[OpenClash 配置管理指南 §12.4–12.8](https://github.com/vernesong/OpenClash/blob/dev/.github/skills/openclash-user-guide/12-subscribe-config.md)
+
+## 独立运行 Mihomo
+
+本地完整配置 `config.yaml` 从 Mihomo 工作目录下的 `rules/` 读取规则。首次配置时，可将 `config.example.yaml` 合并到现有配置的对应顶层段落，再填写 `Subscription.url`。合并规则时保留在末尾的单一 `MATCH`。在仓库目录运行 `mihomo -t -d . -f config.yaml` 校验，或运行 `mihomo -d . -f config.yaml` 启动。
+
+`proxy-providers/` 中的示例用于补充节点订阅，可将其条目合并到主配置的 `proxy-providers`，并确保策略组的 `use` 引用对应的键。私有订阅地址仅保存在本地配置中。
 
 ## Routing
 
 | Ruleset | Policy | Coverage |
 | --- | --- | --- |
 | `AI` | `AI` group | OpenAI, Anthropic, Moonshot/Kimi, Gemini, DeepSeek, xAI, and other major AI providers |
-| `Google` | `Proxy` | Google services and YouTube, including country-specific Google domains |
-| `GitHub` | `Proxy` | GitHub websites, APIs, releases, packages, and user content |
-| `GameAPI` | `Proxy` | Steam, Epic, EA, Ubisoft, Blizzard, and Riot service endpoints |
+| `Google` | `Google` group | Google services and YouTube, including country-specific Google domains |
+| `GitHub` | `GitHub` group | GitHub websites, APIs, releases, packages, and user content |
+| `GameAPI` | `GameAPI` group | Steam, Epic, EA, Ubisoft, Blizzard, and Riot service endpoints |
 | `GameCDN` | `DIRECT` | Game downloads, updates, static assets, and video content |
-| `MicrosoftAPI` | `Proxy` | Microsoft identity, Graph, Azure management, OneDrive, and Microsoft 365 APIs |
+| `MicrosoftAPI` | `MicrosoftAPI` group | Microsoft identity, Graph, Azure management, OneDrive, and Microsoft 365 APIs |
 | `MicrosoftCDN` | `DIRECT` | Microsoft downloads, updates, and content-delivery endpoints |
-| `Bahamut` | `Taiwan` | Bahamut/Gamer pages, APIs, and video streams |
+| `Bahamut` | `Taiwan` group | Bahamut/Gamer pages, APIs, and video streams |
 | `LocalNetwork` | `DIRECT` | LAN, localhost, private addresses, link-local addresses, and Tailscale-style carrier-grade NAT ranges |
-| `Developer` | `Proxy` | Docker, npm, PyPI, Go, Rust, package registries, and developer communities |
-| `Telegram` | `Proxy` | Telegram domains and the IP ranges used by its clients |
-| `Discord` | `Proxy` | Discord pages, APIs, voice, and media endpoints |
-| `SocialMedia` | `Proxy` | X/Twitter, Facebook, Instagram, Threads, Reddit, WhatsApp, and LinkedIn |
-| `Streaming` | `Proxy` | Netflix, Disney+, Spotify, Twitch, and Vimeo |
+| `Developer` | `Developer` group | Docker, npm, PyPI, Go, Rust, package registries, and developer communities |
+| `Telegram` | `Telegram` group | Telegram domains and the IP ranges used by its clients |
+| `Discord` | `Discord` group | Discord pages, APIs, voice, and media endpoints |
+| `SocialMedia` | `SocialMedia` group | X/Twitter, Facebook, Instagram, Threads, Reddit, WhatsApp, and LinkedIn |
+| `Streaming` | `Streaming` group | Netflix, Disney+, Spotify, Twitch, and Vimeo |
 
-## Proxy Provider（代理节点提供者）
+## 验证分流
 
-`proxy-providers/` 中的 `subscription.example.yaml` 是远程订阅提供者模板。将其 `url` 替换为你自己的订阅地址，并在完整配置的 `proxy-providers` 下合并；`proxies/local.example.yaml` 是本地节点模板，同样用于参考，不应提交包含私有凭据的文件。
+在 OpenClash 仪表盘的连接页查看命中的规则和出站策略。用 `steamcontent.com` 下的下载域名检查游戏 CDN，用 `generativelanguage.googleapis.com` 检查 AI，用 `ani.gamer.com.tw` 检查台湾组。
 
-`config.example.yaml` 中的 `Proxy` 分组已通过 `use: [Subscription]` 引用远程提供者，并保留 `include-all: true` 以兼容现有节点。代理节点由 `proxy-providers` 提供，`rule-providers` 只负责流量分流规则，两者互不替代。
-
-`proxy-providers/subscription.example.yaml` 是通用远程订阅提供者模板；
-`proxy-providers/airport.example.yaml` 是机场订阅提供者模板，适用于返回 Clash/Mihomo 格式 YAML 的机场订阅。
-
-`config.example.yaml` 中的 `Proxy` 分组使用 `include-all: true`，会自动聚合你合并进完整配置的所有 `proxy-providers` 节点。代理节点由 `proxy-providers` 提供，`rule-providers` 只负责流量分流规则，两者互不替代。
-
-The configuration also rejects domains in `GEOSITE,category-ads-all`, then routes remaining mainland China domains and IPs directly with `GEOSITE,cn` and `GEOIP,CN`. Custom rules take precedence, so Moonshot still uses `AI`, Bahamut still uses `Taiwan`, and Google remains fully proxied. These built-in rules require Mihomo's standard GeoSite and GeoIP data files.
-
-## Usage
-
-1. Keep `rules/` beside your merged Mihomo configuration file.
-2. Merge `rule-providers`, `proxy-groups`, and `rules` from `config.example.yaml` into that configuration. Do not replace your existing proxy nodes or `proxy-providers`.
-3. Add the custom rules before your final `MATCH` rule. Preserve the shown order: local traffic first, direct CDN rules before API rules, `AI` before `Google`, and China direct rules last. Use `MATCH,Proxy` as the fallback if your configuration does not already define one.
-4. 在你的完整配置中合并 `proxy-providers`，并将 `subscription.example.yaml` 中的示例 URL 替换为实际订阅地址。
-4. Select an outbound node in `Proxy`. The `AI` group can independently use `Proxy` or `DIRECT`. `Taiwan` automatically includes nodes whose names contain Taiwan, Taipei, TW, 台湾, 台灣, 台北, or 臺北.
-5. Validate the complete configuration with `mihomo -t -f your-config.yaml`, then reload it and test representative domains.
-
-For remote rule providers, change each provider to `type: http`, replace `path` with its raw-file `url`, and add an update `interval`.
+规则顺序为本地直连、广告拦截、CDN 直连、服务分流、中国大陆直连、最终代理。

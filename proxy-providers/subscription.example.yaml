@@ -1,11 +1,11 @@
 # 代理节点提供者模板。将示例 URL 替换为你自己的订阅地址，并不要提交包含私有凭据的文件。
 #
-# 使用方式：在完整配置的 proxy-providers 下合并此文件，或以 type: http 远程引用订阅。
+# 使用方式：将下面的 Subscription 合并到主配置的 proxy-providers 中。
 
-providers:
+proxy-providers:
   Subscription:
     type: http
-    url: "https://example.com/subscription?token=YOUR_TOKEN"  # 替换为你的实际订阅 URL
+    url: "https://subscription.example.invalid/mihomo"
     interval: 86400
     health-check:
       enable: true

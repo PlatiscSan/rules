@@ -1,24 +1,20 @@
-# Merge these sections into an existing Mihomo configuration.
-# Rule-provider paths are relative to the merged configuration file.
+# 将以下段落合并到现有 Mihomo 配置，并填写 Subscription 的订阅地址。
+proxy-providers:
+  Subscription:
+    type: http
+    path: ./proxy-providers/Subscription.yaml
+    url: "https://subscription.example.invalid/mihomo"
+    interval: 86400
+    health-check:
+      enable: true
+      url: "https://www.gstatic.com/generate_204"
+      interval: 300
+      lazy: true
 
-# 机场订阅示例（取消注释并替换 URL 后使用）：
-# proxy-providers:
-#   Airport:
-#     type: http
-#     url: "https://example-airport.com/subscribe?token=YOUR_TOKEN"
-#     interval: 86400
-#     health-check:
-#       enable: true
-#       url: "https://www.gstatic.com/generate_204"
-#       interval: 300
-#       lazy: true
-
-# 合并你自己的 proxy-providers 到此处，例如：
-# proxy-providers:
-#   Subscription:
-#     type: http
-#     url: "https://your-subscription.example.com"
-#     interval: 86400
+  # 本地代理节点示例（不含敏感信息，用于文档参考）：
+  # LocalExample:
+  #   type: file
+  #   path: ./proxies/local.yaml
 
 rule-providers:
   LocalNetwork:
@@ -93,20 +89,54 @@ rule-providers:
     path: ./rules/Streaming.list
 
 proxy-groups:
-  # include-all imports nodes from existing proxies and proxy-providers.
   - name: Proxy
     type: select
-    include-all: true
+    use: [Subscription]
   - name: AI
     type: select
     proxies: [Proxy, DIRECT]
+    use: [Subscription]
   - name: Taiwan
     type: select
-    proxies:
-      - DIRECT
-    use:
-      - Subscription
-    filter: '(?i)台湾|台灣|台北|臺北|taiwan|taipei|\btw\b'
+    use: [Subscription]
+    empty-fallback: REJECT
+    filter: '(?i)🇹🇼|台湾|台灣|臺灣|台北|臺北|taiwan|taipei|\btw\b'
+  - name: Google
+    type: select
+    proxies: [Proxy]
+    use: [Subscription]
+  - name: GitHub
+    type: select
+    proxies: [Proxy]
+    use: [Subscription]
+  - name: GameAPI
+    type: select
+    proxies: [Proxy]
+    use: [Subscription]
+  - name: MicrosoftAPI
+    type: select
+    proxies: [Proxy]
+    use: [Subscription]
+  - name: Developer
+    type: select
+    proxies: [Proxy]
+    use: [Subscription]
+  - name: Telegram
+    type: select
+    proxies: [Proxy]
+    use: [Subscription]
+  - name: Discord
+    type: select
+    proxies: [Proxy]
+    use: [Subscription]
+  - name: SocialMedia
+    type: select
+    proxies: [Proxy]
+    use: [Subscription]
+  - name: Streaming
+    type: select
+    proxies: [Proxy]
+    use: [Subscription]
 
 rules:
   - RULE-SET,LocalNetwork,DIRECT
@@ -118,17 +148,16 @@ rules:
   # Keep AI ahead of Google so Gemini and Vertex AI use the AI group.
   - RULE-SET,AI,AI
   - RULE-SET,Bahamut,Taiwan
-  - RULE-SET,Google,Proxy
-  - RULE-SET,GitHub,Proxy
-  - RULE-SET,GameAPI,Proxy
-  - RULE-SET,MicrosoftAPI,Proxy
-  - RULE-SET,Developer,Proxy
-  - RULE-SET,Telegram,Proxy
-  - RULE-SET,Discord,Proxy
-  - RULE-SET,SocialMedia,Proxy
-  - RULE-SET,Streaming,Proxy
+  - RULE-SET,Google,Google
+  - RULE-SET,GitHub,GitHub
+  - RULE-SET,GameAPI,GameAPI
+  - RULE-SET,MicrosoftAPI,MicrosoftAPI
+  - RULE-SET,Developer,Developer
+  - RULE-SET,Telegram,Telegram
+  - RULE-SET,Discord,Discord
+  - RULE-SET,SocialMedia,SocialMedia
+  - RULE-SET,Streaming,Streaming
   # Custom routing above takes precedence over mainland China direct rules.
   - GEOSITE,cn,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,Proxy
-  # Place these entries before the existing final MATCH rule.

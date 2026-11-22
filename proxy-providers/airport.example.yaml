@@ -1,12 +1,12 @@
 # 机场订阅代理提供者模板。将示例 URL 替换为你的机场订阅地址，不要提交私有订阅或凭据。
 #
 # 大多数机场订阅返回 Clash/Mihomo 格式的 YAML，可直接作为 proxy-providers 使用。
-# 若订阅返回 Base64 或其他格式，请先通过订阅转换服务转换为 Clash/Mihomo YAML 再使用。
+# 优先使用机场提供的 Clash/Mihomo YAML 订阅地址。使用 Airport 作为键时，同步修改策略组的 use。
 
-providers:
+proxy-providers:
   Airport:
     type: http
-    url: "https://example-airport.com/subscribe?token=YOUR_TOKEN"  # 替换为你的机场订阅 URL
+    url: "https://subscription.example.invalid/mihomo"
     interval: 86400
     health-check:
       enable: true
@@ -17,5 +17,5 @@ providers:
   # 多机场备份示例（根据需要启用）：
   # AirportBackup:
   #   type: http
-  #   url: "https://backup-airport.example.com/subscribe?token=YOUR_TOKEN"
+  #   url: "https://backup-subscription.example.invalid/mihomo"
   #   interval: 86400
