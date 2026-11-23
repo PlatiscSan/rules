@@ -322,6 +322,11 @@ rule-providers:
     behavior: classical
     format: text
     path: ./rules/BahamutCDN.list
+  Zhipu:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/Zhipu.list
 
 proxy-groups:
   - name: Proxy
@@ -405,6 +410,10 @@ proxy-groups:
     proxies: [AI]
     use: [Subscription]
   - name: Qwen
+    type: select
+    proxies: [AI]
+    use: [Subscription]
+  - name: Zhipu
     type: select
     proxies: [AI]
     use: [Subscription]
@@ -584,6 +593,7 @@ rules:
   - RULE-SET,Perplexity,Perplexity
   - RULE-SET,Copilot,Copilot
   - RULE-SET,Qwen,Qwen
+  - RULE-SET,Zhipu,Zhipu
   - RULE-SET,AI,AI
   - RULE-SET,Bahamut,Bahamut
   - RULE-SET,Google,Google
