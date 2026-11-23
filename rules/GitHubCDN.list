@@ -1,0 +1,7 @@
+# GitHubCDN
+DOMAIN-SUFFIX,githubusercontent.com
+DOMAIN-SUFFIX,githubassets.com
+DOMAIN,github-cloud.s3.amazonaws.com
+DOMAIN,github-production-release-asset-2e65be.s3.amazonaws.com
+DOMAIN,github-production-user-asset-6210df.s3.amazonaws.com
+DOMAIN,github-production-repository-file-5c1aeb.s3.amazonaws.com

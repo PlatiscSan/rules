@@ -252,6 +252,76 @@ rule-providers:
     behavior: classical
     format: text
     path: ./rules/StackOverflow.list
+  GoogleCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/GoogleCDN.list
+  YouTubeCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/YouTubeCDN.list
+  GitHubCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/GitHubCDN.list
+  DeveloperCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/DeveloperCDN.list
+  AICDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/AICDN.list
+  SocialCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/SocialCDN.list
+  TelegramCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/TelegramCDN.list
+  DiscordCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/DiscordCDN.list
+  NetflixCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/NetflixCDN.list
+  DisneyPlusCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/DisneyPlusCDN.list
+  SpotifyCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/SpotifyCDN.list
+  TwitchCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/TwitchCDN.list
+  VimeoCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/VimeoCDN.list
+  BahamutCDN:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/BahamutCDN.list
 
 proxy-groups:
   - name: Proxy
@@ -434,14 +504,76 @@ proxy-groups:
     type: select
     proxies: [Developer]
     use: [Subscription]
+  - name: GameCDN
+    type: select
+    proxies: [DIRECT, GameAPI]
+  - name: MicrosoftCDN
+    type: select
+    proxies: [DIRECT, MicrosoftAPI]
+  - name: GoogleCDN
+    type: select
+    proxies: [DIRECT, Google]
+  - name: YouTubeCDN
+    type: select
+    proxies: [DIRECT, Google]
+  - name: GitHubCDN
+    type: select
+    proxies: [DIRECT, GitHub]
+  - name: DeveloperCDN
+    type: select
+    proxies: [DIRECT, Developer]
+  - name: AICDN
+    type: select
+    proxies: [DIRECT, AI]
+  - name: SocialCDN
+    type: select
+    proxies: [DIRECT, SocialMedia]
+  - name: TelegramCDN
+    type: select
+    proxies: [DIRECT, Telegram]
+  - name: DiscordCDN
+    type: select
+    proxies: [DIRECT, Discord]
+  - name: NetflixCDN
+    type: select
+    proxies: [DIRECT, Netflix]
+  - name: DisneyPlusCDN
+    type: select
+    proxies: [DIRECT, DisneyPlus]
+  - name: SpotifyCDN
+    type: select
+    proxies: [DIRECT, Spotify]
+  - name: TwitchCDN
+    type: select
+    proxies: [DIRECT, Twitch]
+  - name: VimeoCDN
+    type: select
+    proxies: [DIRECT, Vimeo]
+  - name: BahamutCDN
+    type: select
+    proxies: [DIRECT, Bahamut]
 
 rules:
   - RULE-SET,LocalNetwork,DIRECT
   # Requires Mihomo's standard geosite data; block ads before Google rules.
   - GEOSITE,category-ads-all,REJECT
   # Direct CDN rules must precede their broader API rules.
-  - RULE-SET,GameCDN,DIRECT
-  - RULE-SET,MicrosoftCDN,DIRECT
+  - RULE-SET,GameCDN,GameCDN
+  - RULE-SET,MicrosoftCDN,MicrosoftCDN
+  - RULE-SET,GoogleCDN,GoogleCDN
+  - RULE-SET,YouTubeCDN,YouTubeCDN
+  - RULE-SET,GitHubCDN,GitHubCDN
+  - RULE-SET,DeveloperCDN,DeveloperCDN
+  - RULE-SET,AICDN,AICDN
+  - RULE-SET,SocialCDN,SocialCDN
+  - RULE-SET,TelegramCDN,TelegramCDN
+  - RULE-SET,DiscordCDN,DiscordCDN
+  - RULE-SET,NetflixCDN,NetflixCDN
+  - RULE-SET,DisneyPlusCDN,DisneyPlusCDN
+  - RULE-SET,SpotifyCDN,SpotifyCDN
+  - RULE-SET,TwitchCDN,TwitchCDN
+  - RULE-SET,VimeoCDN,VimeoCDN
+  - RULE-SET,BahamutCDN,BahamutCDN
   # Keep AI ahead of Google so Gemini and Vertex AI use the AI group.
   - RULE-SET,OpenAI,OpenAI
   - RULE-SET,Claude,Claude
