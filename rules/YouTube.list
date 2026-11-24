@@ -1,0 +1,7 @@
+# YouTube website, embeds, and API. Media CDN hosts are in YouTubeCDN.list.
+DOMAIN-SUFFIX,youtube.com
+DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,youtube-nocookie.com
+DOMAIN-SUFFIX,youtubeeducation.com
+DOMAIN-SUFFIX,youtube.googleapis.com
+DOMAIN-SUFFIX,youtubei.googleapis.com
