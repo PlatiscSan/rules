@@ -5,7 +5,7 @@
 1. 在本地完整配置 `custom.yaml` 中填写或确认 `proxy-providers.Subscription.url`。使用订阅服务提供的 Clash/Mihomo YAML 地址，响应应包含顶层 `proxies` 节点列表。
 2. 打开 **服务 → OpenClash → 配置管理**，选择 **规则集文件** 上传 `rules/` 下的全部 64 个 `.list` 文件。OpenClash 将它们放在 `/etc/openclash/rule_provider/`，对应 `custom.yaml` 中的 `./rule_provider/`。
 3. 在同页选择 **配置文件** 上传 `custom.yaml` 并应用，确保 Mihomo 核心已安装。规则使用 GeoSite 的 `category-ads-all`、`cn` 和 GeoIP 的 `CN`，需要核心可加载对应的 GEO 数据。
-4. 打开仪表盘，在 `Proxy` 组选默认节点。各服务组默认跟随 `Proxy`，也可以独立选择订阅节点。巴哈姆特走 `Bahamut`，该组按节点名筛选台湾节点，组为空时回退到 `REJECT`。使用支持 `empty-fallback` 的 Mihomo 核心。
+4. 打开仪表盘，在 `Proxy` 组选默认节点。各服务组默认跟随 `Proxy`，也可以独立选择订阅节点。巴哈姆特走 `Bahamut`，默认从订阅筛选台湾节点，无匹配节点时拒绝连接。手动选择 `DIRECT` 可切换为直连。使用支持 `empty-fallback` 的 Mihomo 核心。
 
 [OpenClash 配置管理指南 §12.4–12.8](https://github.com/vernesong/OpenClash/blob/dev/.github/skills/openclash-user-guide/12-subscribe-config.md)
 
@@ -36,7 +36,7 @@
 
 ## 服务子组
 
-配置共 64 个策略组。下表的 35 个子组默认跟随所属策略组，也可直接选订阅节点。子组规则写在所属规则集之前，剩余域名仍按所属规则集处理。CDN 规则排在对应服务规则之前。
+仪表盘中的 64 个策略组均可手动选 `DIRECT`，原有默认出口继续生效。下表的 35 个子组默认跟随所属策略组，也可直接选订阅节点。子组规则写在所属规则集之前，剩余域名仍按所属规则集处理。CDN 规则排在对应服务规则之前。
 
 | 所属策略组 | 子组 |
 | --- | --- |

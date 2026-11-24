@@ -341,6 +341,7 @@ rule-providers:
 proxy-groups:
   - name: Proxy
     type: select
+    proxies: [SubscriptionNodes, DIRECT]
     empty-fallback: REJECT
     use: [Subscription]
   - name: AI
@@ -349,188 +350,189 @@ proxy-groups:
     use: [Subscription]
   - name: Bahamut
     type: select
+    proxies: [BahamutTaiwanNodes, DIRECT]
     use: [Subscription]
     empty-fallback: REJECT
     filter: '(?i)🇹🇼|台湾|台灣|臺灣|台北|臺北|taiwan|taipei|\btw\b'
   - name: Google
     type: select
-    proxies: [Proxy]
+    proxies: [Proxy, DIRECT]
     use: [Subscription]
   - name: YouTube
     type: select
-    proxies: [Google]
+    proxies: [Google, DIRECT]
     use: [Subscription]
   - name: GitHub
     type: select
-    proxies: [Proxy]
+    proxies: [Proxy, DIRECT]
     use: [Subscription]
   - name: GameAPI
     type: select
-    proxies: [Proxy]
+    proxies: [Proxy, DIRECT]
     use: [Subscription]
   - name: MicrosoftAPI
     type: select
-    proxies: [Proxy]
+    proxies: [Proxy, DIRECT]
     use: [Subscription]
   - name: Developer
     type: select
-    proxies: [Proxy]
+    proxies: [Proxy, DIRECT]
     use: [Subscription]
   - name: JsDelivr
     type: select
-    proxies: [Developer]
+    proxies: [Developer, DIRECT]
     use: [Subscription]
   - name: Telegram
     type: select
-    proxies: [Proxy]
+    proxies: [Proxy, DIRECT]
     use: [Subscription]
   - name: Discord
     type: select
-    proxies: [Proxy]
+    proxies: [Proxy, DIRECT]
     use: [Subscription]
   - name: SocialMedia
     type: select
-    proxies: [Proxy]
+    proxies: [Proxy, DIRECT]
     use: [Subscription]
   - name: Streaming
     type: select
-    proxies: [Proxy]
+    proxies: [Proxy, DIRECT]
     use: [Subscription]
   - name: OpenAI
     type: select
-    proxies: [AI]
+    proxies: [AI, DIRECT]
     use: [Subscription]
   - name: Claude
     type: select
-    proxies: [AI]
+    proxies: [AI, DIRECT]
     use: [Subscription]
   - name: Kimi
     type: select
-    proxies: [AI]
+    proxies: [AI, DIRECT]
     use: [Subscription]
   - name: Gemini
     type: select
-    proxies: [AI]
+    proxies: [AI, DIRECT]
     use: [Subscription]
   - name: DeepSeek
     type: select
-    proxies: [AI]
+    proxies: [AI, DIRECT]
     use: [Subscription]
   - name: Grok
     type: select
-    proxies: [AI]
+    proxies: [AI, DIRECT]
     use: [Subscription]
   - name: Perplexity
     type: select
-    proxies: [AI]
+    proxies: [AI, DIRECT]
     use: [Subscription]
   - name: Copilot
     type: select
-    proxies: [AI]
+    proxies: [AI, DIRECT]
     use: [Subscription]
   - name: Qwen
     type: select
-    proxies: [AI]
+    proxies: [AI, DIRECT]
     use: [Subscription]
   - name: Zhipu
     type: select
-    proxies: [AI]
+    proxies: [AI, DIRECT]
     use: [Subscription]
   - name: Netflix
     type: select
-    proxies: [Streaming]
+    proxies: [Streaming, DIRECT]
     use: [Subscription]
   - name: DisneyPlus
     type: select
-    proxies: [Streaming]
+    proxies: [Streaming, DIRECT]
     use: [Subscription]
   - name: Spotify
     type: select
-    proxies: [Streaming]
+    proxies: [Streaming, DIRECT]
     use: [Subscription]
   - name: Twitch
     type: select
-    proxies: [Streaming]
+    proxies: [Streaming, DIRECT]
     use: [Subscription]
   - name: Vimeo
     type: select
-    proxies: [Streaming]
+    proxies: [Streaming, DIRECT]
     use: [Subscription]
   - name: Steam
     type: select
-    proxies: [GameAPI]
+    proxies: [GameAPI, DIRECT]
     use: [Subscription]
   - name: EpicGames
     type: select
-    proxies: [GameAPI]
+    proxies: [GameAPI, DIRECT]
     use: [Subscription]
   - name: EA
     type: select
-    proxies: [GameAPI]
+    proxies: [GameAPI, DIRECT]
     use: [Subscription]
   - name: Ubisoft
     type: select
-    proxies: [GameAPI]
+    proxies: [GameAPI, DIRECT]
     use: [Subscription]
   - name: Blizzard
     type: select
-    proxies: [GameAPI]
+    proxies: [GameAPI, DIRECT]
     use: [Subscription]
   - name: RiotGames
     type: select
-    proxies: [GameAPI]
+    proxies: [GameAPI, DIRECT]
     use: [Subscription]
   - name: Twitter
     type: select
-    proxies: [SocialMedia]
+    proxies: [SocialMedia, DIRECT]
     use: [Subscription]
   - name: Facebook
     type: select
-    proxies: [SocialMedia]
+    proxies: [SocialMedia, DIRECT]
     use: [Subscription]
   - name: Instagram
     type: select
-    proxies: [SocialMedia]
+    proxies: [SocialMedia, DIRECT]
     use: [Subscription]
   - name: Threads
     type: select
-    proxies: [SocialMedia]
+    proxies: [SocialMedia, DIRECT]
     use: [Subscription]
   - name: Reddit
     type: select
-    proxies: [SocialMedia]
+    proxies: [SocialMedia, DIRECT]
     use: [Subscription]
   - name: WhatsApp
     type: select
-    proxies: [SocialMedia]
+    proxies: [SocialMedia, DIRECT]
     use: [Subscription]
   - name: LinkedIn
     type: select
-    proxies: [SocialMedia]
+    proxies: [SocialMedia, DIRECT]
     use: [Subscription]
   - name: Docker
     type: select
-    proxies: [Developer]
+    proxies: [Developer, DIRECT]
     use: [Subscription]
   - name: Npm
     type: select
-    proxies: [Developer]
+    proxies: [Developer, DIRECT]
     use: [Subscription]
   - name: PyPI
     type: select
-    proxies: [Developer]
+    proxies: [Developer, DIRECT]
     use: [Subscription]
   - name: Go
     type: select
-    proxies: [Developer]
+    proxies: [Developer, DIRECT]
     use: [Subscription]
   - name: Rust
     type: select
-    proxies: [Developer]
+    proxies: [Developer, DIRECT]
     use: [Subscription]
   - name: StackOverflow
     type: select
-    proxies: [Developer]
+    proxies: [Developer, DIRECT]
     use: [Subscription]
   - name: GameCDN
     type: select
@@ -580,6 +582,17 @@ proxy-groups:
   - name: BahamutCDN
     type: select
     proxies: [DIRECT, Bahamut]
+  - name: SubscriptionNodes
+    hidden: true
+    type: select
+    empty-fallback: REJECT
+    use: [Subscription]
+  - name: BahamutTaiwanNodes
+    hidden: true
+    type: select
+    use: [Subscription]
+    empty-fallback: REJECT
+    filter: '(?i)🇹🇼|台湾|台灣|臺灣|台北|臺北|taiwan|taipei|\btw\b'
 
 rules:
   - RULE-SET,LocalNetwork,DIRECT
