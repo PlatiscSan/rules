@@ -332,6 +332,11 @@ rule-providers:
     behavior: classical
     format: text
     path: ./rules/YouTube.list
+  JsDelivr:
+    type: file
+    behavior: classical
+    format: text
+    path: ./rules/JsDelivr.list
 
 proxy-groups:
   - name: Proxy
@@ -370,6 +375,10 @@ proxy-groups:
   - name: Developer
     type: select
     proxies: [Proxy]
+    use: [Subscription]
+  - name: JsDelivr
+    type: select
+    proxies: [Developer]
     use: [Subscription]
   - name: Telegram
     type: select
@@ -624,6 +633,7 @@ rules:
   - RULE-SET,Go,Go
   - RULE-SET,Rust,Rust
   - RULE-SET,StackOverflow,StackOverflow
+  - RULE-SET,JsDelivr,JsDelivr
   - RULE-SET,Developer,Developer
   - RULE-SET,Telegram,Telegram
   - RULE-SET,Discord,Discord
