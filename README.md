@@ -58,4 +58,4 @@
 
 在 OpenClash 仪表盘的连接页查看命中的规则和出站策略。用 `steamcontent.com` 下的下载域名检查游戏 CDN，用 `generativelanguage.googleapis.com` 检查 Gemini，用 `ani.gamer.com.tw` 检查台湾组。
 
-规则顺序为本地直连、广告拦截、CDN 直连、服务分流、中国大陆直连、最终代理。
+规则顺序为本地直连、广告拦截、CDN 直连、服务分流、中国大陆直连、最终直连。
